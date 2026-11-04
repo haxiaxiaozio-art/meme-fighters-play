@@ -1,0 +1,110 @@
+声音来源
+专属短音效来源与处理记录 · v0.3
+日期：2026-11-04（Asia/Shanghai）
+
+本次采用已有公开短采样，没有创建或克隆真人声音。以下素材均已下载为本地 MP3，供浏览器游戏使用，不依赖远程热链。没有发现可据此声明全部素材为 CC0 或拥有商业授权的依据。
+
+1. 坤坤尖叫鸡：你干嘛
+游戏文件：dist/assets/audio/kun-ni-gan-ma.mp3
+最终解码时长：2.750 秒
+来源标题：你干嘛哈哈哟
+来源页面：https://www.myinstants.com/en/instant/ni-gan-ma-ha-ha-yo-86780/
+原始媒体：https://www.myinstants.com/media/sounds/ni-gan-ma-ha-ha-yo.mp3
+原始长度：约 5.664 秒
+选段：原始文件开头 0.000–2.750 秒，保留用户指定台词的开头短片段。
+处理：单声道 44.1 kHz、MP3 128 kb/s；5 毫秒淡入，尾部 40 毫秒淡出；响度目标 -17 LUFS，峰值上限 -2 dBTP；没有变声或改变语速。
+真实性说明：来自公开上传的同名梗声按钮，未独立证明它就是综艺母带原件。
+
+2. 耄耋：猫哈气
+游戏文件：dist/assets/audio/maodie-hiss.mp3
+最终解码时长：2.221474 秒
+来源标题：Cat Hiss
+来源页面：https://www.myinstants.com/en/instant/cat-hiss-38766/
+原始媒体：https://www.myinstants.com/media/sounds/cat-hiss.mp3
+原始长度：约 5.201 秒（含较长前后静音）
+选段：原始文件 0.360–2.640 秒，去掉前后静音，保留短哈气。
+处理：单声道 44.1 kHz、MP3 128 kb/s；10 毫秒淡入、50 毫秒淡出；响度目标 -18 LUFS，峰值上限 -2 dBTP；没有变声或改变语速。
+真实性说明：这是猫哈气音效，不是经确认的耄耋原视频录音。
+
+3. 奶龙：大笑
+游戏文件：dist/assets/audio/nailong-laugh.mp3
+最终解码时长：2.824286 秒
+来源项目：Diyeego/naiwa-pet（README 描述“奶龙大笑”视频及大笑音效）
+来源页面：https://github.com/Diyeego/naiwa-pet/blob/main/naiwa/voice/laugh.mp3
+原始媒体：https://raw.githubusercontent.com/Diyeego/naiwa-pet/main/naiwa/voice/laugh.mp3
+原始长度：约 3.474 秒
+选段：原始文件 0.000–2.850 秒。
+处理：单声道 44.1 kHz、MP3 128 kb/s；5 毫秒淡入、50 毫秒淡出；响度目标 -18 LUFS，峰值上限 -2 dBTP；没有变声或改变语速。
+真实性说明：来自奶蛙/奶龙梗桌宠项目的笑声音效；该项目说明用于学习交流、请勿商用，未独立证明其为官方奶龙配音。
+
+校验：三个最终文件都由 FFmpeg 完整解码成功，均为有效 MP3，长度均小于 3 秒。当前工具无法向代理提供音频听觉输入，试听内容与台词终止点未经过代理听觉确认；不能据此声称已经完整听审。
+工具：imageio-ffmpeg 包中的 FFmpeg 9.0.2（临时处理环境）。
+原始文件及解码 WAV 留存：项目旁的 audio-work-v03/，没有打包进游戏 dist/。
+袋鼠台词：没有取得足够可靠的“胆子真是肥嘟嘟的”原始短录音；由主流程使用明确标为合成的跳跃、重击和提示铃音效配合。
+
+4. 大狗：真实狗叫（v0.6）
+游戏文件：dist/assets/audio/dog-bark.ogg
+来源：Barking of a dog 2.ogg，Amada44，2014-04-17，自行录制。
+来源页面：https://commons.wikimedia.org/wiki/File:Barking_of_a_dog_2.ogg
+原始媒体：https://upload.wikimedia.org/wikipedia/commons/5/58/Barking_of_a_dog_2.ogg
+许可：CC BY-SA 3.0，https://creativecommons.org/licenses/by-sa/3.0/
+保留原录音文件，无文件转换。普通音波播放开头最多 1.05 秒；大招播放最多 4 秒，游戏内叠加独立合成的低音冲击。此录音及播放截段按同许可使用。
+真实性说明：真实狗叫，不声称录音中的犬种是拉布拉多。音量受游戏主音量控制。
+
+
+v0.8 character sounds and original music (2026-11-04)
+banana-cry.mp3: 2.40 s excerpt, mono 44.1 kHz, short tail fade.
+Source: https://www.myinstants.com/en/instant/cry-banana-cat-84043/
+Media: https://www.myinstants.com/media/sounds/cry-banana-cat.mp3
+niulai-call.mp3: 2.70 s excerpt from the public sound entry 牛来（妈妈！牛来）, mono 44.1 kHz, short tail fade.
+Source: https://suocheyinxiao.cn/?search=%E7%89%9B%E6%9D%A5
+Entry: bfdd23060cfa3a1f0364cf89a8f98152
+Both excerpts play once, respect voice mute and cooldown; ownership is not asserted. Failed loads are explicitly labeled as original synthetic fallback.
+Background music: original algorithmic pentatonic compositions in battle-music.mjs. Five stage arrangements; all tones and percussion generated locally with Web Audio. No music recording or melody sampled. Separate music enable/volume; ducked during voice clips and stopped during pause/background.
+
+
+音频素材署名
+Barking of a dog 2 — Amada44, 2014-04-17.
+Source: https://commons.wikimedia.org/wiki/File:Barking_of_a_dog_2.ogg
+Original: https://upload.wikimedia.org/wikipedia/commons/5/58/Barking_of_a_dog_2.ogg
+License: Creative Commons Attribution-ShareAlike 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+dog-bark.ogg is the unchanged recording. Gameplay limits playback to the first 1.05 seconds for ordinary attacks or up to 4 seconds for the ultimate. These excerpts retain the same license. Independently synthesized impact sounds are layered during gameplay.
+
+OIIA short spinning-cat meme sample — uploaded by vivian66 on Myinstants.
+Source: https://www.myinstants.com/en/instant/oiia-oiia-sound-92058/
+Download: https://www.myinstants.com/media/sounds/oiia-oiia-sound.mp3
+Retrieved: 2026-11-04.
+Local file: oiia-spin.mp3. The source download is unchanged; playback is limited to 2.8 seconds and does not loop.
+The source page does not state a reuse license. Attribution identifies the source; no ownership or open-license claim is made for this meme recording.
+
+Cheems' warning and blade slashes, Doge's comic face-pop, food consumption sounds and other procedural Foley are original Web Audio synthesis in audio.mjs. Happy cat retains an original synthesized fallback beat only for a failed sample load; the fallback is not the classic recording.
+
+Happy Happy Happy Cat — short excerpt of "My Happy Song" by Super Simple Songs.
+Meme sample: https://www.myinstants.com/en/instant/happy-happy-happy-cat-17367/ (uploaded by wesleybacon).
+Download: https://www.myinstants.com/media/sounds/happy-happy-happy-cat.mp3
+Original song information: https://supersimple.com/song/my-happy-song-featuring-noodle-pals/
+Meme reference: https://knowyourmeme.com/memes/happy-happy-happy-cat
+Retrieved: 2026-11-04.
+Local file: happy-cat.mp3. Only the first 2.8 seconds of the 7.55-second meme sample are included, re-encoded with a 60 ms ending fade. The complete song and the unused sample remainder are not bundled. Playback is a single excerpt, capped at 2.8 seconds without looping; the helper's dance lasts longer than this sound.
+The sample's embedded metadata identifies My Happy Song / Super Simple Songs. The source page does not state a reuse license. Attribution identifies the recording and source; it does not grant an open license or claim ownership.
+
+"我的刀盾" / "What da dog doin" — Vine meme dialogue sample, uploaded by h4ppy on Myinstants.
+Source: https://www.myinstants.com/en/instant/what-da-dog-doin-35890/
+Download: https://www.myinstants.com/media/sounds/yt1s_wU4BGgD.mp3
+Meme-language reference: https://wattbrother.com/377479 (Chinese "我的刀盾" is the phonetic rendering of "What the dog doing?").
+Retrieved: 2026-11-04.
+Local file: my-shield-dog.mp3, unchanged short sample. Playback does not loop and is capped at 2.2 seconds.
+The source page does not state a reuse license. Attribution identifies the sample source and does not claim an open license or ownership.
+This recorded voice is separate from the synthesized shieldDog metal Foley cue. It obeys the character-voice toggle and a 5.5-second gameplay cooldown; the victory presentation deliberately starts its own one-shot voice.
+
+
+v0.8 character sounds and original music (2026-11-04)
+banana-cry.mp3: 2.40 s excerpt, mono 44.1 kHz, short tail fade.
+Source: https://www.myinstants.com/en/instant/cry-banana-cat-84043/
+Media: https://www.myinstants.com/media/sounds/cry-banana-cat.mp3
+niulai-call.mp3: 2.70 s excerpt from the public sound entry 牛来（妈妈！牛来）, mono 44.1 kHz, short tail fade.
+Source: https://suocheyinxiao.cn/?search=%E7%89%9B%E6%9D%A5
+Entry: bfdd23060cfa3a1f0364cf89a8f98152
+Both excerpts play once, respect voice mute and cooldown; ownership is not asserted. Failed loads are explicitly labeled as original synthetic fallback.
+Background music: original algorithmic pentatonic compositions in battle-music.mjs. Five stage arrangements; all tones and percussion generated locally with Web Audio. No music recording or melody sampled. Separate music enable/volume; ducked during voice clips and stopped during pause/background.
