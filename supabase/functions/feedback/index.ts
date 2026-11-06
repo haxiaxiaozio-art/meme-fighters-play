@@ -27,7 +27,24 @@ export function createHandler(env:{url:string;serviceKey:string},fetcher:typeof 
  const ipHash=await digest(env.serviceKey+'|'+clientIp);
  async function rpc(action:string,payload:unknown={}){const r=await fetcher(env.url+'/rest/v1/rpc/meme_feedback',{method:'POST',headers:{'Content-Type':'application/json','apikey':env.serviceKey,'Authorization':'Bearer '+env.serviceKey},body:JSON.stringify({p_action:action,p_payload:payload,p_token_hash:tokenHash,p_ip_hash:ipHash,p_admin_hash:adminHash})});const data=await r.json();if(!r.ok){const code=Object.keys(errorMap).find(key=>String(data.message).includes(key));throw {code:code||'SERVER_ERROR'};}return data;}
  async function payload(){if(!request.headers.get('content-type')?.startsWith('application/json'))throw {code:'INVALID_INPUT'};const raw=await request.text();if(raw.length>10000)throw {code:'INVALID_INPUT'};try{const data=JSON.parse(raw);if(!data||typeof data!=='object'||Array.isArray(data))throw 0;return data;}catch{throw {code:'INVALID_INPUT'};}}
+ async function analyticsRpc(action:string,data:unknown={},visitorHash:string|null=null){
+  const dailyIpHash=await digest(env.serviceKey+'|analytics-limit|'+new Date().toISOString().slice(0,10)+'|'+clientIp);
+  const response=await fetcher(env.url+'/rest/v1/rpc/meme_analytics',{method:'POST',headers:{'Content-Type':'application/json','apikey':env.serviceKey,'Authorization':'Bearer '+env.serviceKey},body:JSON.stringify({p_action:action,p_payload:data,p_visitor_hash:visitorHash,p_ip_hash:dailyIpHash,p_admin_hash:adminHash})});
+  const result=await response.json();
+  if(!response.ok){const code=Object.keys(errorMap).find(key=>String(result.message).includes(key));throw {code:code||'SERVER_ERROR'};}
+  return result;
+ }
  try{
+  if(path==='/api/analytics'&&request.method==='POST'){
+   const p=await payload(),uuid=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
+   if(typeof p.visitorId!=='string'||!uuid.test(p.visitorId)||typeof p.viewId!=='string'||!uuid.test(p.viewId)||!['pageview','game_enter'].includes(p.event))throw {code:'INVALID_INPUT'};
+   // Never persist or forward arbitrary client fields, URLs, nicknames or raw identifiers.
+   return json(await analyticsRpc('record',{viewId:p.viewId,event:p.event},await digest(env.serviceKey+'|analytics-visitor|'+p.visitorId)));
+  }
+  if(path==='/api/admin/analytics'&&request.method==='GET'){
+   const days=url.searchParams.get('days')||'7';if(!['7','30'].includes(days))throw {code:'INVALID_INPUT'};
+   return json(await analyticsRpc('admin.stats',{days:Number(days)}));
+  }
   if(path==='/api/session'&&request.method==='POST'){const nextToken=crypto.randomUUID()+crypto.randomUUID(),session=await rpc('session',{candidateHash:await digest(nextToken)});return json({token:session.existing?token:nextToken});}
   if(path==='/api/comments'&&request.method==='GET'){const c=Number(url.searchParams.get('cursor')),category=url.searchParams.get('category')||'all';return json(await rpc('list',{cursor:Number.isSafeInteger(c)&&c>0?c:null,category:Object.hasOwn(categories,category)?category:'all'}));}
   if(path==='/api/comments'&&request.method==='POST'){let p;try{p=validate(await payload());}catch(e){if(e instanceof Error)return json({error:e.message},400);throw e;}return json(await rpc('create',p),201);}
@@ -40,6 +57,6 @@ export function createHandler(env:{url:string;serviceKey:string},fetcher:typeof 
    return new Response(stream,{headers:{...headers,'Content-Type':'text/csv; charset=utf-8','Content-Disposition':'attachment; filename=player-feedback.csv'}});
   }
   return json({error:'接口不存在。'},404);
- }catch(e){const code=(e as {code?:string})?.code||'SERVER_ERROR',mapped=errorMap[code];return json({error:mapped?.[1]||'评论服务暂时不可用，内容已保留，请稍后再试。'},mapped?.[0]||503);}
+ }catch(e){const code=(e as {code?:string})?.code||'SERVER_ERROR',mapped=errorMap[code];return json({error:mapped?.[1]||(path.includes('analytics')?'访问统计暂时不可用，请稍后刷新。':'评论服务暂时不可用，内容已保留，请稍后再试。')},mapped?.[0]||503);}
 };}
 if(import.meta.main)Deno.serve(createHandler({url:Deno.env.get('SUPABASE_URL')!,serviceKey:Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!}));
