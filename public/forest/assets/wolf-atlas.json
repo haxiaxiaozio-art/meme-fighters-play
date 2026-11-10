@@ -1,0 +1,428 @@
+{
+  "character": "白狼",
+  "revision": "movement-integration-1",
+  "cellWidth": 192,
+  "cellHeight": 256,
+  "columns": 8,
+  "rows": 6,
+  "originalCell": [
+    384,
+    512
+  ],
+  "exportScale": 0.5,
+  "worldScaleFromOriginal": 0.25,
+  "method": "Nearest-neighbor half-size packing; no repainting. Idle uses aligned v3.",
+  "sha256": "11ea5d10c4b977437dd022e0b73f9c1b2c63edf53ae3940a33c7fd179090e336",
+  "clips": {
+    "idle": {
+      "row": 0,
+      "count": 8,
+      "duration": 1.04,
+      "label": "待机",
+      "origin": [
+        212.5,
+        474
+      ]
+    },
+    "walk": {
+      "row": 1,
+      "count": 8,
+      "duration": 0.64,
+      "label": "行走",
+      "origin": [
+        220,
+        458
+      ]
+    },
+    "dash": {
+      "row": 2,
+      "count": 8,
+      "duration": 0.22,
+      "label": "冲刺",
+      "origin": [
+        226,
+        458
+      ]
+    },
+    "jump": {
+      "row": 3,
+      "count": 8,
+      "duration": 0.8,
+      "label": "跳跃",
+      "origins": [
+        [
+          220,
+          475
+        ],
+        [
+          225,
+          475
+        ],
+        [
+          232,
+          462
+        ],
+        [
+          238,
+          436
+        ],
+        [
+          234,
+          424
+        ],
+        [
+          230,
+          450
+        ],
+        [
+          226,
+          476
+        ],
+        [
+          228,
+          476
+        ]
+      ]
+    },
+    "dodge": {
+      "row": 4,
+      "count": 8,
+      "duration": 0.48,
+      "label": "地面翻滚（素材预览）",
+      "origin": [
+        222,
+        445
+      ]
+    },
+    "airdodge": {
+      "row": 5,
+      "count": 8,
+      "duration": 0.2,
+      "label": "空中闪避",
+      "origins": [
+        [
+          220,
+          458
+        ],
+        [
+          220,
+          450
+        ],
+        [
+          220,
+          450
+        ],
+        [
+          236,
+          456
+        ],
+        [
+          240,
+          462
+        ],
+        [
+          235,
+          455
+        ],
+        [
+          225,
+          450
+        ],
+        [
+          225,
+          458
+        ]
+      ]
+    }
+  },
+  "sources": [
+    {
+      "action": "idle",
+      "frame": 1,
+      "source": "wolf-idle-aligned-v3/frames/01.png",
+      "sha256": "246ef58bd72f6afab321453194ca46e65f61d06cc6c54001f6b6721008a6f652"
+    },
+    {
+      "action": "idle",
+      "frame": 2,
+      "source": "wolf-idle-aligned-v3/frames/02.png",
+      "sha256": "296792cc5ef958aba754b7a6134e6ff7273c7642dca751f345b2ca266c4a4d82"
+    },
+    {
+      "action": "idle",
+      "frame": 3,
+      "source": "wolf-idle-aligned-v3/frames/03.png",
+      "sha256": "3337e549fb0c9217fcc4564f46f391da450223b78d636f4901eaae68e20b9e64"
+    },
+    {
+      "action": "idle",
+      "frame": 4,
+      "source": "wolf-idle-aligned-v3/frames/04.png",
+      "sha256": "d84f5305a4affe4de647916f90e423f33385950ddaf8ae9cd0d7fce1264b0dfc"
+    },
+    {
+      "action": "idle",
+      "frame": 5,
+      "source": "wolf-idle-aligned-v3/frames/05.png",
+      "sha256": "f41789357dd5e45ccff873c498b813ccf1cd5ea7053f5f0cf9e1244397f69fbd"
+    },
+    {
+      "action": "idle",
+      "frame": 6,
+      "source": "wolf-idle-aligned-v3/frames/06.png",
+      "sha256": "9283163c795ee2aff6e676b0aac6c9f268ef3395b21a6ba16807bbf175f7ce74"
+    },
+    {
+      "action": "idle",
+      "frame": 7,
+      "source": "wolf-idle-aligned-v3/frames/07.png",
+      "sha256": "ebd0c9d07bd0f58a8717c36426a93ac4807193825f6fc2baf1da1cb3fe5cda60"
+    },
+    {
+      "action": "idle",
+      "frame": 8,
+      "source": "wolf-idle-aligned-v3/frames/08.png",
+      "sha256": "e242e419003cfde9d65194ba42677f559219d80443b065cf3dcd6c2193e53fb2"
+    },
+    {
+      "action": "walk",
+      "frame": 1,
+      "source": "wolf-chibi-movement-v2/frames/walk/01.png",
+      "sha256": "d45903bfd7530cdbc1cc61951cfdecf28a2c5eba85ec6a848a1036a180d01800"
+    },
+    {
+      "action": "walk",
+      "frame": 2,
+      "source": "wolf-chibi-movement-v2/frames/walk/02.png",
+      "sha256": "a45dba390e02c39b4c5469e865c24c41377696faebecfafaacae1c75a8ab0242"
+    },
+    {
+      "action": "walk",
+      "frame": 3,
+      "source": "wolf-chibi-movement-v2/frames/walk/03.png",
+      "sha256": "fa19b61ebf67c9fe11cec9c4f09c13ab3cf0000172a0d8a02a3cc1527bdaf73a"
+    },
+    {
+      "action": "walk",
+      "frame": 4,
+      "source": "wolf-chibi-movement-v2/frames/walk/04.png",
+      "sha256": "77062a5cfb71d8f57440e97d0b7b07ba3425f8f9de7897e3b49d7492c01fbade"
+    },
+    {
+      "action": "walk",
+      "frame": 5,
+      "source": "wolf-chibi-movement-v2/frames/walk/05.png",
+      "sha256": "888d419edfcc8a9ef2d722b7cda4b4e8c7620a6795cd6d8bf082e74d178bac54"
+    },
+    {
+      "action": "walk",
+      "frame": 6,
+      "source": "wolf-chibi-movement-v2/frames/walk/06.png",
+      "sha256": "50a1df3bd9aaea857e26e0d2d6611e9a1ff71b0276658abe8579591085158dd0"
+    },
+    {
+      "action": "walk",
+      "frame": 7,
+      "source": "wolf-chibi-movement-v2/frames/walk/07.png",
+      "sha256": "825974927f0547295c70246457b5652e6414414cd91a1c9e472491ec7d1c91b0"
+    },
+    {
+      "action": "walk",
+      "frame": 8,
+      "source": "wolf-chibi-movement-v2/frames/walk/08.png",
+      "sha256": "1ee87d35c2be2317ae9c6cbe38647a9c2f52232fd54ca865d9e13cd96f7ec6a8"
+    },
+    {
+      "action": "dash",
+      "frame": 1,
+      "source": "wolf-chibi-movement-v2/frames/dash/01.png",
+      "sha256": "3a8956af325729dbface8690c978b6671808774ec370fa6efc976707c52d9466"
+    },
+    {
+      "action": "dash",
+      "frame": 2,
+      "source": "wolf-chibi-movement-v2/frames/dash/02.png",
+      "sha256": "646491d584439214694269321fb5c0d5139769a289d76bed3e0ddbbc49835450"
+    },
+    {
+      "action": "dash",
+      "frame": 3,
+      "source": "wolf-chibi-movement-v2/frames/dash/03.png",
+      "sha256": "7c3c707de6befa61290aa8c0e5ebedbad13812d8d71568eb50d633302d99fa77"
+    },
+    {
+      "action": "dash",
+      "frame": 4,
+      "source": "wolf-chibi-movement-v2/frames/dash/04.png",
+      "sha256": "f48b438b93e4b02f77fd2add9fc210b2d11a63dadb8656fff94b7b0d444ea301"
+    },
+    {
+      "action": "dash",
+      "frame": 5,
+      "source": "wolf-chibi-movement-v2/frames/dash/05.png",
+      "sha256": "ec745e2436c1ff4fe81fc4ae1e9943c2ef7bffae23609010ab38c8268c0de1a6"
+    },
+    {
+      "action": "dash",
+      "frame": 6,
+      "source": "wolf-chibi-movement-v2/frames/dash/06.png",
+      "sha256": "f85016b21515fbffd640eb2a0946d20382cb08ddd8260be25795fccfab7e218b"
+    },
+    {
+      "action": "dash",
+      "frame": 7,
+      "source": "wolf-chibi-movement-v2/frames/dash/07.png",
+      "sha256": "b15f1a18d3b2f1dc976e8f374c998511fbb9b0ee281790b2b67bb42eb349805f"
+    },
+    {
+      "action": "dash",
+      "frame": 8,
+      "source": "wolf-chibi-movement-v2/frames/dash/08.png",
+      "sha256": "f0f4a94a9128ec56eba548ed53d09945557b41b092e0e6362e46a3f6b0aaf965"
+    },
+    {
+      "action": "jump",
+      "frame": 1,
+      "source": "wolf-chibi-movement-v2/frames/jump/01.png",
+      "sha256": "5149792dbd047d0c626b70b9e3d5a790569c983a414efa6494d7d83f5e9df062"
+    },
+    {
+      "action": "jump",
+      "frame": 2,
+      "source": "wolf-chibi-movement-v2/frames/jump/02.png",
+      "sha256": "4bfcadc352e5ccf8e7ca82f1711bc4ebad33071392457e8265ba54e174a877f5"
+    },
+    {
+      "action": "jump",
+      "frame": 3,
+      "source": "wolf-chibi-movement-v2/frames/jump/03.png",
+      "sha256": "65f2a01d4b0182e3f7cf32ded49affa0b38ee261879d91a95702435ffc5d4af9"
+    },
+    {
+      "action": "jump",
+      "frame": 4,
+      "source": "wolf-chibi-movement-v2/frames/jump/04.png",
+      "sha256": "9e0d58e9fe2b2f33d84ae32c7272cb538f0c817d0b5c9012892f998698838d96"
+    },
+    {
+      "action": "jump",
+      "frame": 5,
+      "source": "wolf-chibi-movement-v2/frames/jump/05.png",
+      "sha256": "48121aef375cd35dc1b71b9d3508e11aaa12ab0eaaa6afe3f2accef5bc162ceb"
+    },
+    {
+      "action": "jump",
+      "frame": 6,
+      "source": "wolf-chibi-movement-v2/frames/jump/06.png",
+      "sha256": "d4bee257cf2b7095efd613670b2208bc79dfc213abc51d60f56ed9564cc59afc"
+    },
+    {
+      "action": "jump",
+      "frame": 7,
+      "source": "wolf-chibi-movement-v2/frames/jump/07.png",
+      "sha256": "d027b4327de4ce0fc0383b8db0a822eda19013b5f6552030622bba30e507e1ba"
+    },
+    {
+      "action": "jump",
+      "frame": 8,
+      "source": "wolf-chibi-movement-v2/frames/jump/08.png",
+      "sha256": "5de13972c712d188edc9e46ca29f04783094da91503238f042a1a2bd84e51f8a"
+    },
+    {
+      "action": "dodge",
+      "frame": 1,
+      "source": "wolf-chibi-movement-v2/frames/dodge/01.png",
+      "sha256": "9b25d5f71d1c23f914ce6110d9801db3b54b20153da3c49de89a31d40d58e4b2"
+    },
+    {
+      "action": "dodge",
+      "frame": 2,
+      "source": "wolf-chibi-movement-v2/frames/dodge/02.png",
+      "sha256": "c234f1e7cd235481f33c9c15306887f5825c3544b827f2fc8702824959f17a63"
+    },
+    {
+      "action": "dodge",
+      "frame": 3,
+      "source": "wolf-chibi-movement-v2/frames/dodge/03.png",
+      "sha256": "bc5454d59348a1b90b7fe979ee5b3b3619fee422b3dbce4a7a5c08d8c552a784"
+    },
+    {
+      "action": "dodge",
+      "frame": 4,
+      "source": "wolf-chibi-movement-v2/frames/dodge/04.png",
+      "sha256": "15d0173e5287f2f14107b398d1d13a2e0aeea5fa4b6ed2401f49d057c9cd77c8"
+    },
+    {
+      "action": "dodge",
+      "frame": 5,
+      "source": "wolf-chibi-movement-v2/frames/dodge/05.png",
+      "sha256": "fdfb23a6c1f277b40a7d3cf2fdfaf09699d09758ebd7df6e98f7414a9a3d8ca3"
+    },
+    {
+      "action": "dodge",
+      "frame": 6,
+      "source": "wolf-chibi-movement-v2/frames/dodge/06.png",
+      "sha256": "7b3a911b6a2a04d128be2cdc681ef3982fb84cacb54bf0691f9f391caf3ff1ad"
+    },
+    {
+      "action": "dodge",
+      "frame": 7,
+      "source": "wolf-chibi-movement-v2/frames/dodge/07.png",
+      "sha256": "eeda1136133f3f896b608ff5093b03f2a8392e76f2e3faf2a0080bf7304023f4"
+    },
+    {
+      "action": "dodge",
+      "frame": 8,
+      "source": "wolf-chibi-movement-v2/frames/dodge/08.png",
+      "sha256": "ffae5321a2e3e0bac6fcbe5a2e00c46279a1de6dc49f8585650961df358fb486"
+    },
+    {
+      "action": "airdodge",
+      "frame": 1,
+      "source": "wolf-chibi-movement-v2/frames/airdodge/01.png",
+      "sha256": "352d0a883d93af10f1879fbe79fdc96cd6471a7f5cece147f62756cb0b743d81"
+    },
+    {
+      "action": "airdodge",
+      "frame": 2,
+      "source": "wolf-chibi-movement-v2/frames/airdodge/02.png",
+      "sha256": "ea1a218e8989d8183e15db2bd5eff07247e1ea93e36f050c49f9a8e44646e53f"
+    },
+    {
+      "action": "airdodge",
+      "frame": 3,
+      "source": "wolf-chibi-movement-v2/frames/airdodge/03.png",
+      "sha256": "12bd276142fff20bb33561a80a182832fb73279e459630ead75b9c91405410af"
+    },
+    {
+      "action": "airdodge",
+      "frame": 4,
+      "source": "wolf-chibi-movement-v2/frames/airdodge/04.png",
+      "sha256": "4fd5279c3efb9d732782f3d4b51205818d7ccb8248d63ae6d6c52209843bdaeb"
+    },
+    {
+      "action": "airdodge",
+      "frame": 5,
+      "source": "wolf-chibi-movement-v2/frames/airdodge/05.png",
+      "sha256": "717b84003a404553fdd1d9a564ad4d081a6e60631b4d7ed0777ba3f0240925fb"
+    },
+    {
+      "action": "airdodge",
+      "frame": 6,
+      "source": "wolf-chibi-movement-v2/frames/airdodge/06.png",
+      "sha256": "ce576105ba24c5f578f39e7e7bceab3aa21f8e58f1f66b5b6c44af0809588b6e"
+    },
+    {
+      "action": "airdodge",
+      "frame": 7,
+      "source": "wolf-chibi-movement-v2/frames/airdodge/07.png",
+      "sha256": "78969fccae78f1073aa05e7ae017703ec0a23e629351749162d70226d41ab695"
+    },
+    {
+      "action": "airdodge",
+      "frame": 8,
+      "source": "wolf-chibi-movement-v2/frames/airdodge/08.png",
+      "sha256": "4b8dc5d01020326c1fdbf044cfb7172dd1350d434fb4d99ee3f73cbe9e8be591"
+    }
+  ]
+}

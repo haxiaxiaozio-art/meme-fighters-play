@@ -11,7 +11,11 @@ export function Comment({comment:c}:{comment:PlayerComment}){return <article cla
 export default function Arena(){
  const [started,setStarted]=useState(false),[gameLoaded,setGameLoaded]=useState(false),[gameError,setGameError]=useState("");
  const game=useRef<HTMLIFrameElement>(null);
- useEffect(()=>{track("pageview");},[]);
+ useEffect(()=>{
+  track("pageview");
+  const section=document.getElementById(location.hash.slice(1));
+  section?.scrollIntoView();
+ },[]);
  const [data,setData]=useState<Page|null>(null),[filter,setFilter]=useState("all"),[refresh,setRefresh]=useState(0),[loading,setLoading]=useState(true),[listError,setListError]=useState(""),[moreBusy,setMoreBusy]=useState(false);
  const [nickname,setNickname]=useState(""),[body,setBody]=useState(""),[category,setCategory]=useState<Category>("experience"),[rating,setRating]=useState(0),[website,setWebsite]=useState("");
  const [sending,setSending]=useState(false),[formMessage,setFormMessage]=useState(""),[formError,setFormError]=useState(false);
@@ -27,7 +31,7 @@ export default function Arena(){
   try{localStorage.setItem("meme-nickname",nickname.trim());}catch{}setBody("");setRating(0);requestRef.current=null;setFormMessage("收到！你的玩后感已经出现在评论区。 ");setFilter("all");setRefresh(n=>n+1);
  }catch(e){setFormError(true);setFormMessage(e instanceof Error?e.message:"暂时没能提交，内容已保留。");}finally{setSending(false);}}
  async function fullscreen(){setGameError("");try{if(game.current?.requestFullscreen){await game.current.requestFullscreen();game.current.focus();}else setGameError("这个浏览器暂不支持全屏，可以用右侧的独立窗口打开。");}catch{setGameError("未能进入全屏，可以用右侧的独立窗口打开。");}}
- return <><header className="site-header"><a href="#" className="brand" aria-label="MEME大乱斗首页"><span className="brand-mark">M</span><span>MEME<span className="brand-sub">大乱斗</span></span></a><nav aria-label="主导航"><a href="#arena">试玩</a><a href="#comments">玩家留言</a><a href="#controls">操作说明</a></nav><a className="header-cta" href="#feedback">写玩后感 <ArrowUpRight size={17}/></a></header>
+ return <><header className="site-header"><a href="./" className="brand" aria-label="返回游戏选择"><span className="brand-mark">M</span><span>MEME<span className="brand-sub">大乱斗</span></span></a><nav aria-label="主导航"><a href="#arena">试玩</a><a href="#comments">玩家留言</a><a href="#controls">操作说明</a></nav><a className="header-cta" href="#feedback">写玩后感 <ArrowUpRight size={17}/></a></header>
  <main><section className="intro" id="arena"><div><p className="eyebrow"><span className="live-dot"/> 梗王集结 · 试玩开放中</p><h1>先打一架，<span>再聊两句。</span></h1><p className="intro-copy">奶龙、耄耋和他们的朋友都到齐了。选个角色上场，打完留点真心话。</p></div><span className="version-label">BROWSER GAME<span>v0.8</span></span></section>
  <section className="arena-shell" aria-label="游戏试玩"><div className="arena-toolbar"><span><Swords size={17}/> MEME 大乱斗 <i>2–4 角色同场</i></span><span className="arena-actions">{started&&<button onClick={fullscreen}><Maximize size={15}/> 全屏</button>}<a href="./game/index.html" target="_blank" rel="noopener" onClick={()=>track("game_enter")}>独立窗口 <ArrowUpRight size={15}/></a></span></div>
  <div className="game-viewport">{!started?<div className="game-poster"><img src="./arena-cover.png" alt="奶龙、耄耋、刀盾狗与香蕉猫集结：四个梗王，打起来了" fetchPriority="high"/><div className="play-panel"><button className="play-button" onClick={()=>{setStarted(true);track("game_enter");}}><Gamepad2 size={24}/> 进入擂台 <ArrowRight size={22}/></button><p>无需安装 · 点击加载游戏</p></div></div>:<><iframe ref={game} src="./game/index.html" title="MEME大乱斗在线游戏" allow="autoplay; fullscreen; gamepad" allowFullScreen onLoad={()=>setGameLoaded(true)}/>{!gameLoaded&&<div className="game-loading"><span className="spinner"/>梗王正在入场…</div>}</>}</div>

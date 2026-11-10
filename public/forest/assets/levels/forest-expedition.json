@@ -1,0 +1,617 @@
+{
+  "version": 2,
+  "id": "forest-expedition",
+  "name": "森境 · 通往茶会的小径",
+  "width": 8800,
+  "height": 1150,
+  "objects": [
+    {
+      "id": "ground-0",
+      "type": "platform",
+      "x": 0,
+      "y": 590,
+      "name": "路面",
+      "w": 700,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "roots-floor",
+      "type": "platform",
+      "x": 300,
+      "y": 900,
+      "name": "路面",
+      "w": 780,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "roots-step",
+      "type": "platform",
+      "x": 820,
+      "y": 735,
+      "name": "折返踏台",
+      "w": 185,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "lookout",
+      "type": "platform",
+      "x": 800,
+      "y": 385,
+      "name": "茶会高台 · 风跃",
+      "w": 930,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "shaft-approach",
+      "type": "platform",
+      "x": 1610,
+      "y": 590,
+      "name": "路面",
+      "w": 900,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "shaft-left",
+      "type": "platform",
+      "x": 2200,
+      "y": 180,
+      "name": "路面",
+      "w": 55,
+      "h": 285,
+      "climb": true
+    },
+    {
+      "id": "shaft-right",
+      "type": "platform",
+      "x": 2480,
+      "y": 250,
+      "name": "攀木井 · 贴墙后按跳跃",
+      "w": 65,
+      "h": 340,
+      "climb": true
+    },
+    {
+      "id": "canopy",
+      "type": "platform",
+      "x": 2480,
+      "y": 250,
+      "name": "路面",
+      "w": 1360,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "vine-shelf",
+      "type": "platform",
+      "x": 3300,
+      "y": 115,
+      "name": "路面",
+      "w": 365,
+      "h": 35,
+      "climb": false
+    },
+    {
+      "id": "tea-road",
+      "type": "platform",
+      "x": 3920,
+      "y": 250,
+      "name": "路面",
+      "w": 4860,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "river-west",
+      "type": "platform",
+      "x": 3720,
+      "y": 590,
+      "name": "路面",
+      "w": 580,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "river-east",
+      "type": "platform",
+      "x": 5180,
+      "y": 590,
+      "name": "路面",
+      "w": 430,
+      "h": 85,
+      "climb": false
+    },
+    {
+      "id": "river-end",
+      "type": "platform",
+      "x": 5550,
+      "y": 250,
+      "name": "路面",
+      "w": 70,
+      "h": 500,
+      "climb": false
+    },
+    {
+      "id": "start",
+      "type": "spawn",
+      "x": 140,
+      "y": 590,
+      "name": "出生点"
+    },
+    {
+      "id": "finish",
+      "type": "exit",
+      "x": 8600,
+      "y": 250,
+      "name": "镜后庭院"
+    },
+    {
+      "id": "camp-roots",
+      "type": "camp",
+      "x": 480,
+      "y": 485,
+      "name": "林口营地",
+      "w": 140,
+      "h": 105
+    },
+    {
+      "id": "camp-wind",
+      "type": "camp",
+      "x": 520,
+      "y": 795,
+      "name": "树根营地",
+      "w": 140,
+      "h": 105
+    },
+    {
+      "id": "camp-shaft",
+      "type": "camp",
+      "x": 1900,
+      "y": 485,
+      "name": "攀木营地",
+      "w": 140,
+      "h": 105
+    },
+    {
+      "id": "camp-staff",
+      "type": "camp",
+      "x": 2700,
+      "y": 145,
+      "name": "树冠营地",
+      "w": 140,
+      "h": 105
+    },
+    {
+      "id": "camp-river",
+      "type": "camp",
+      "x": 3800,
+      "y": 485,
+      "name": "河岸营地",
+      "w": 140,
+      "h": 105
+    },
+    {
+      "id": "camp-tea",
+      "type": "camp",
+      "x": 6380,
+      "y": 145,
+      "name": "茶会前营地",
+      "w": 140,
+      "h": 105
+    },
+    {
+      "id": "camp-mirror",
+      "type": "camp",
+      "x": 8180,
+      "y": 145,
+      "name": "镜后营地",
+      "w": 140,
+      "h": 105
+    },
+    {
+      "id": "wind-sigil",
+      "type": "grant",
+      "x": 565,
+      "y": 800,
+      "name": "风跃符印",
+      "w": 90,
+      "h": 100,
+      "grantKind": "sigil",
+      "grantId": "wind",
+      "guard": ""
+    },
+    {
+      "id": "sword-spin",
+      "type": "grant",
+      "x": 910,
+      "y": 285,
+      "name": "回旋斩",
+      "w": 90,
+      "h": 100,
+      "grantKind": "rune",
+      "grantId": "swordSpin",
+      "guard": ""
+    },
+    {
+      "id": "dagger",
+      "type": "grant",
+      "x": 1190,
+      "y": 285,
+      "name": "赤晶匕首",
+      "w": 90,
+      "h": 100,
+      "grantKind": "weapon",
+      "grantId": "dagger",
+      "guard": ""
+    },
+    {
+      "id": "dagger-echo",
+      "type": "grant",
+      "x": 1370,
+      "y": 285,
+      "name": "往返影刃",
+      "w": 90,
+      "h": 100,
+      "grantKind": "rune",
+      "grantId": "daggerEcho",
+      "guard": ""
+    },
+    {
+      "id": "sigil-seat-2",
+      "type": "grant",
+      "x": 1780,
+      "y": 490,
+      "name": "双纹符印座",
+      "w": 90,
+      "h": 100,
+      "grantKind": "slot",
+      "grantId": "sigil-2",
+      "guard": ""
+    },
+    {
+      "id": "wall-sigil",
+      "type": "grant",
+      "x": 1920,
+      "y": 490,
+      "name": "攀木符印",
+      "w": 90,
+      "h": 100,
+      "grantKind": "sigil",
+      "grantId": "wall",
+      "guard": ""
+    },
+    {
+      "id": "staff",
+      "type": "grant",
+      "x": 2810,
+      "y": 150,
+      "name": "青晶月杖",
+      "w": 90,
+      "h": 100,
+      "grantKind": "weapon",
+      "grantId": "staff",
+      "guard": ""
+    },
+    {
+      "id": "fire-rune",
+      "type": "grant",
+      "x": 2930,
+      "y": 150,
+      "name": "火球",
+      "w": 90,
+      "h": 100,
+      "grantKind": "rune",
+      "grantId": "fireball",
+      "guard": ""
+    },
+    {
+      "id": "ice-rune",
+      "type": "grant",
+      "x": 3050,
+      "y": 150,
+      "name": "寒冰箭",
+      "w": 90,
+      "h": 100,
+      "grantKind": "rune",
+      "grantId": "iceArrow",
+      "guard": ""
+    },
+    {
+      "id": "staff-slot-2",
+      "type": "grant",
+      "x": 3140,
+      "y": 150,
+      "name": "月杖拓槽石",
+      "w": 90,
+      "h": 100,
+      "grantKind": "slot",
+      "grantId": "staff-2",
+      "guard": ""
+    },
+    {
+      "id": "shock-vine",
+      "type": "vine",
+      "x": 3480,
+      "y": 8,
+      "name": "火球可烧毁的藤蔓",
+      "w": 67,
+      "h": 107
+    },
+    {
+      "id": "shock-rune",
+      "type": "grant",
+      "x": 3550,
+      "y": 15,
+      "name": "电流冲击",
+      "w": 90,
+      "h": 100,
+      "grantKind": "rune",
+      "grantId": "shock",
+      "guard": "shock-vine"
+    },
+    {
+      "id": "staff-slot-3",
+      "type": "grant",
+      "x": 3600,
+      "y": 15,
+      "name": "月杖双纹拓槽石",
+      "w": 90,
+      "h": 100,
+      "grantKind": "slot",
+      "grantId": "staff-3",
+      "guard": "shock-vine"
+    },
+    {
+      "id": "river",
+      "type": "water",
+      "x": 4300,
+      "y": 590,
+      "name": "寒冰箭可冻结的流水",
+      "w": 880,
+      "h": 110
+    },
+    {
+      "id": "rise-rune",
+      "type": "grant",
+      "x": 5360,
+      "y": 490,
+      "name": "升龙斩",
+      "w": 90,
+      "h": 100,
+      "grantKind": "rune",
+      "grantId": "swordRise",
+      "guard": ""
+    },
+    {
+      "id": "sword-slot-2",
+      "type": "grant",
+      "x": 5430,
+      "y": 490,
+      "name": "长剑拓槽石",
+      "w": 90,
+      "h": 100,
+      "grantKind": "slot",
+      "grantId": "sword-2",
+      "guard": ""
+    },
+    {
+      "id": "sigil-seat-3",
+      "type": "grant",
+      "x": 8200,
+      "y": 150,
+      "name": "三纹符印座",
+      "w": 90,
+      "h": 100,
+      "grantKind": "slot",
+      "grantId": "sigil-3",
+      "guard": ""
+    },
+    {
+      "id": "first-slime",
+      "type": "enemy",
+      "x": 295,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "roots-slime",
+      "type": "enemy",
+      "x": 875,
+      "y": 900,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "lookout-goblin",
+      "type": "enemy",
+      "x": 1550,
+      "y": 385,
+      "name": "敌人刷新点",
+      "kind": "goblin",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "canopy-slime",
+      "type": "enemy",
+      "x": 3200,
+      "y": 250,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "canopy-goblin",
+      "type": "enemy",
+      "x": 3300,
+      "y": 250,
+      "name": "敌人刷新点",
+      "kind": "goblin",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "canopy-fairy",
+      "type": "enemy",
+      "x": 3400,
+      "y": 165,
+      "name": "敌人刷新点",
+      "kind": "fairy",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "river-slime",
+      "type": "enemy",
+      "x": 3960,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "river-goblin",
+      "type": "enemy",
+      "x": 4080,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "goblin",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "river-fairy",
+      "type": "enemy",
+      "x": 4125,
+      "y": 450,
+      "name": "敌人刷新点",
+      "kind": "fairy",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "river-east-slime",
+      "type": "enemy",
+      "x": 5475,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "tea-slime",
+      "type": "enemy",
+      "x": 4830,
+      "y": 250,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "tea-goblin",
+      "type": "enemy",
+      "x": 4990,
+      "y": 250,
+      "name": "敌人刷新点",
+      "kind": "goblin",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "tea-fairy",
+      "type": "enemy",
+      "x": 5090,
+      "y": 135,
+      "name": "敌人刷新点",
+      "kind": "fairy",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "tea-treant",
+      "type": "enemy",
+      "x": 5360,
+      "y": 250,
+      "name": "敌人刷新点",
+      "kind": "treant",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "tea-slime-2",
+      "type": "enemy",
+      "x": 5480,
+      "y": 250,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "tea-goblin-2",
+      "type": "enemy",
+      "x": 5620,
+      "y": 250,
+      "name": "敌人刷新点",
+      "kind": "goblin",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "tea-fairy-2",
+      "type": "enemy",
+      "x": 5880,
+      "y": 135,
+      "name": "敌人刷新点",
+      "kind": "fairy",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "tea-treant-2",
+      "type": "enemy",
+      "x": 6060,
+      "y": 250,
+      "name": "敌人刷新点",
+      "kind": "treant",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "mirror-fairy",
+      "type": "enemy",
+      "x": 8460,
+      "y": 120,
+      "name": "敌人刷新点",
+      "kind": "fairy",
+      "patrol": 120,
+      "respawn": 12
+    },
+    {
+      "id": "alice-room",
+      "type": "bossRoom",
+      "x": 6750,
+      "y": 250,
+      "name": "爱丽丝的茶会",
+      "w": 1280,
+      "h": 180,
+      "entryWidth": 100,
+      "exitX": 8080,
+      "exitY": 250,
+      "sigil": "mirror"
+    }
+  ]
+}

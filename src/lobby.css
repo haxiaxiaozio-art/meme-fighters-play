@@ -1,0 +1,81 @@
+.lobby {
+ width: min(1160px, calc(100% - 64px));
+ margin: 0 auto;
+ padding: clamp(48px, 8vh, 100px) 0 52px;
+}
+.lobby-heading {
+ display: block;
+ padding: 0 0 clamp(20px, 3vw, 34px);
+ border-bottom: 1px solid var(--line);
+ margin-bottom: 20px;
+}
+.lobby-kicker {
+ margin-bottom: 14px;
+ color: var(--orange);
+ font: 700 12px/1.5 ui-monospace, monospace;
+ letter-spacing: .14em;
+}
+.lobby-kicker span { color: var(--muted); }
+.lobby-heading h1 { font-size: clamp(34px, 6vw, 72px); line-height: 1.06; }
+.lobby-games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.lobby-game {
+ display: block;
+ overflow: hidden;
+ border: 1px solid #332b23;
+ border-radius: 7px;
+ background: var(--white);
+ box-shadow: 0 3px 0 #332b23;
+ transition: transform .16s ease, box-shadow .16s ease;
+}
+.lobby-game:hover { transform: translateY(-3px); box-shadow: 0 6px 0 #332b23; }
+.lobby-game:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+.lobby-art { position: relative; overflow: hidden; aspect-ratio: 16/9; background: #2c2431; }
+.lobby-cover { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lobby-forest .lobby-art { background: #152820; isolation: isolate; }
+.lobby-forest .lobby-cover { image-rendering: pixelated; }
+.lobby-character {
+ position: absolute;
+ right: 15%;
+ bottom: -23%;
+ height: 143%;
+ width: auto;
+ max-width: 68%;
+ object-fit: contain;
+ image-rendering: pixelated;
+ filter: drop-shadow(2px 4px 0 #0e1c19a0);
+}
+.lobby-card {
+ display: flex;
+ align-items: end;
+ justify-content: space-between;
+ gap: 12px;
+ padding: 20px;
+}
+.lobby-card h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.2; }
+.lobby-tag { margin: 0 0 5px; color: #a7421d; font-size: 12px; font-weight: 700; }
+.lobby-forest .lobby-tag { color: #386547; }
+.lobby-description { margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.lobby-action {
+ display: inline-flex;
+ align-items: center;
+ gap: 7px;
+ flex-shrink: 0;
+ padding: 8px 10px;
+ border: 1px solid #342a20;
+ border-radius: 4px;
+ background: var(--yellow);
+ color: #2c2318;
+ font-size: 13px;
+ font-weight: 800;
+ white-space: nowrap;
+}
+.lobby-forest .lobby-action { background: #dce9cf; }
+@media(max-width: 700px) {
+ .lobby { width: calc(100% - 36px); padding-top: 40px; }
+ .lobby-games { grid-template-columns: 1fr; gap: 16px; }
+ .lobby-card { padding: 14px; }
+}
+@media(prefers-reduced-motion: reduce) {
+ .lobby-game { transition: none; }
+ .lobby-game:hover { transform: none; }
+}

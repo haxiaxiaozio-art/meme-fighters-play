@@ -1,0 +1,285 @@
+{
+  "version": 1,
+  "id": "forest-whitebox",
+  "name": "森境 · 初行者的小径",
+  "width": 8100,
+  "height": 900,
+  "objects": [
+    {
+      "id": "ground-0",
+      "type": "platform",
+      "x": 0,
+      "y": 590,
+      "name": "路面",
+      "w": 1600,
+      "h": 130
+    },
+    {
+      "id": "ground-1",
+      "type": "platform",
+      "x": 1730,
+      "y": 590,
+      "name": "路面",
+      "w": 1370,
+      "h": 130
+    },
+    {
+      "id": "ground-2",
+      "type": "platform",
+      "x": 3240,
+      "y": 590,
+      "name": "路面",
+      "w": 1560,
+      "h": 130
+    },
+    {
+      "id": "ground-3",
+      "type": "platform",
+      "x": 4930,
+      "y": 590,
+      "name": "路面",
+      "w": 3170,
+      "h": 130
+    },
+    {
+      "id": "start",
+      "type": "spawn",
+      "x": 140,
+      "y": 590,
+      "name": "出生点"
+    },
+    {
+      "id": "finish",
+      "type": "exit",
+      "x": 7950,
+      "y": 590,
+      "name": "通关出口"
+    },
+    {
+      "id": "checkpoint-0",
+      "type": "checkpoint",
+      "x": 1900,
+      "y": 590,
+      "name": "检查点"
+    },
+    {
+      "id": "checkpoint-1",
+      "type": "checkpoint",
+      "x": 3500,
+      "y": 590,
+      "name": "检查点"
+    },
+    {
+      "id": "checkpoint-2",
+      "type": "checkpoint",
+      "x": 5100,
+      "y": 590,
+      "name": "检查点"
+    },
+    {
+      "id": "checkpoint-3",
+      "type": "checkpoint",
+      "x": 6200,
+      "y": 590,
+      "name": "检查点"
+    },
+    {
+      "id": "section-0",
+      "type": "reward",
+      "x": 1450,
+      "y": 430,
+      "name": "路段 1",
+      "w": 100,
+      "h": 160,
+      "points": 2
+    },
+    {
+      "id": "section-1",
+      "type": "reward",
+      "x": 2900,
+      "y": 430,
+      "name": "路段 2",
+      "w": 100,
+      "h": 160,
+      "points": 2
+    },
+    {
+      "id": "section-2",
+      "type": "reward",
+      "x": 4600,
+      "y": 430,
+      "name": "路段 3",
+      "w": 100,
+      "h": 160,
+      "points": 2
+    },
+    {
+      "id": "section-3",
+      "type": "reward",
+      "x": 6000,
+      "y": 430,
+      "name": "路段 4",
+      "w": 100,
+      "h": 160,
+      "points": 2
+    },
+    {
+      "id": "chest-0",
+      "type": "chest",
+      "x": 550,
+      "y": 590,
+      "name": "宝箱",
+      "points": 2
+    },
+    {
+      "id": "chest-1",
+      "type": "chest",
+      "x": 2450,
+      "y": 590,
+      "name": "宝箱",
+      "points": 3
+    },
+    {
+      "id": "chest-2",
+      "type": "chest",
+      "x": 3900,
+      "y": 590,
+      "name": "宝箱",
+      "points": 3
+    },
+    {
+      "id": "chest-3",
+      "type": "chest",
+      "x": 5600,
+      "y": 590,
+      "name": "宝箱",
+      "points": 3
+    },
+    {
+      "id": "chest-4",
+      "type": "chest",
+      "x": 1210,
+      "y": 375,
+      "name": "宝箱",
+      "points": 3
+    },
+    {
+      "id": "chest-5",
+      "type": "chest",
+      "x": 4770,
+      "y": 300,
+      "name": "宝箱",
+      "points": 3
+    },
+    {
+      "id": "high-route",
+      "type": "platform",
+      "x": 1080,
+      "y": 375,
+      "name": "二段跳探索台",
+      "w": 260,
+      "h": 32
+    },
+    {
+      "id": "air-route-a",
+      "type": "platform",
+      "x": 4070,
+      "y": 450,
+      "name": "路面",
+      "w": 180,
+      "h": 32
+    },
+    {
+      "id": "air-route-b",
+      "type": "platform",
+      "x": 4650,
+      "y": 300,
+      "name": "空中冲刺探索台",
+      "w": 230,
+      "h": 32
+    },
+    {
+      "id": "enemy-0",
+      "type": "enemy",
+      "x": 820,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 220,
+      "respawn": 20
+    },
+    {
+      "id": "enemy-1",
+      "type": "enemy",
+      "x": 2200,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "goblin",
+      "patrol": 220,
+      "respawn": 20
+    },
+    {
+      "id": "enemy-2",
+      "type": "enemy",
+      "x": 2770,
+      "y": 420,
+      "name": "敌人刷新点",
+      "kind": "fairy",
+      "patrol": 220,
+      "respawn": 20
+    },
+    {
+      "id": "enemy-3",
+      "type": "enemy",
+      "x": 3710,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "treant",
+      "patrol": 220,
+      "respawn": 20
+    },
+    {
+      "id": "enemy-4",
+      "type": "enemy",
+      "x": 4370,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "slime",
+      "patrol": 220,
+      "respawn": 20
+    },
+    {
+      "id": "enemy-5",
+      "type": "enemy",
+      "x": 5310,
+      "y": 590,
+      "name": "敌人刷新点",
+      "kind": "goblin",
+      "patrol": 220,
+      "respawn": 20
+    },
+    {
+      "id": "enemy-6",
+      "type": "enemy",
+      "x": 5840,
+      "y": 420,
+      "name": "敌人刷新点",
+      "kind": "fairy",
+      "patrol": 220,
+      "respawn": 20
+    },
+    {
+      "id": "alice-room",
+      "type": "bossRoom",
+      "x": 6380,
+      "y": 590,
+      "name": "爱丽丝的茶会",
+      "w": 1280,
+      "h": 180,
+      "points": 5,
+      "entryWidth": 100,
+      "exitX": 7770,
+      "exitY": 590
+    }
+  ]
+}

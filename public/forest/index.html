@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111b18">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; media-src 'self' blob:; object-src 'none'; base-uri 'none'">
+  <title>森境 · 漫游仙境的爱丽丝</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="defeat-screen.css">
+  <link rel="preload" as="image" href="assets/expedition-art/wolf-defeated.png">
+  <link rel="preload" as="image" href="assets/expedition-art/wolf-recover.png">
+  <script src="sprites.js" defer></script>
+  <script src="assets/wolf-combat/data.js" defer></script>
+  <script src="assets/wolf-fx/data.js" defer></script>
+  <script src="wolf-fx.js" defer></script>
+  <script src="wolf-sprites.js" defer></script>
+  <script src="combat-config.js" defer></script>
+  <script src="engine.js" defer></script>
+  <script src="pixel-world.js" defer></script>
+  <script src="boss.js" defer></script>
+  <script src="assets/alice-pixel/data.js" defer></script>
+  <script src="alice-sprites.js" defer></script>
+  <script src="alice-fx.js" defer></script>
+  <script src="boss-render.js" defer></script>
+  <script src="keybindings.js" defer></script>
+  <script src="audio-config.js" defer></script>
+  <script src="assets/audio/alice-voice.js" defer></script>
+  <script src="sound-bank.js" defer></script>
+  <script src="game-audio.js" defer></script>
+  <script src="defeat-screen.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <div class="identity"><span class="emblem" aria-hidden="true">✦</span><span>森境<span class="identity-en" lang="en">SWORD STUDY</span></span></div>
+      <p class="edition">白狼旅人 · 爱丽丝挑战 Demo</p>
+      <button class="text-button" id="reset-button">重置练习 <span aria-hidden="true">↻</span></button>
+    </header>
+    <section class="game-frame" id="game" tabindex="0" aria-label="剑式练习，使用 A D 移动，空格跳跃，J 挥剑，K 冲刺，L 配合方向释放技能，F 格挡或空中回避，T 发射练习弹">
+      <canvas id="canvas" width="1280" height="720" aria-label="森林练习场与白狼旅人"></canvas>
+      <div class="frame-grain" aria-hidden="true"></div>
+      <div class="hud" id="hud">
+        <div class="health-block"><span class="hud-caption">当前动作</span><strong class="action-name" id="action-name">待机</strong><span class="frame-number" id="frame-number">序列帧 01 / 08</span></div>
+        <div class="location"><span class="hud-caption">林间练习场</span><span id="practice-instruction">T 发射练习弹 · F 格挡后衔接连招</span></div>
+        <div class="hud-right"><span class="hit-count"><b id="hit-count">00</b><span class="hud-caption">命中</span></span><button id="pause-button" class="icon-button" aria-label="暂停练习">Ⅱ</button></div>
+      </div>
+      <div class="reward-hud" id="reward-hud" hidden><span id="reward-kind">格挡成功 · 子弹时间</span><b id="reward-seconds">2.0s</b><div class="reward-track"><div id="reward-fill"></div></div><small>玩家保持速度 · J / 方向 + L 自由衔接</small></div>
+      <div class="weapon-hud" id="weapon-hud" data-weapon="sword" hidden><div><strong id="weapon-name">剑</strong><span><kbd id="weapon-key">U</kbd> 切换</span></div><small id="weapon-detail">剑式 / 原地回避</small><span id="jump-charge">跳跃 2 / 2</span></div>
+      <div class="combat-summary" id="combat-summary" hidden><span>格挡 <b id="block-count">0</b></span><span>回避 <b id="evade-count">0</b></span><span>受击 <b id="hurt-count">0</b></span><strong id="combo-display" hidden><b id="combo-count">0</b> COMBO</strong></div>
+      <div class="ability-dock" id="ability-dock" aria-label="技能快捷键与冷却状态" hidden></div>
+      <div class="alice-hud" id="alice-hud" hidden><div class="alice-heading"><span>漫游仙境的爱丽丝</span><b id="boss-phase">第一阶段</b><span id="boss-hp">3000 / 3000</span></div><div class="alice-hp-track"><div id="alice-hp-fill"></div><i></i><i></i></div><small id="boss-attack">玫瑰阳伞</small></div>
+      <div class="player-hp" id="player-hp" hidden><span>白狼 <b id="player-hp-number">300 / 300</b></span><div><i id="player-hp-fill"></i></div><small id="bind-status"></small></div>
+      <div class="phase-announcement" id="phase-announcement" aria-live="polite" hidden><small>WONDERLAND</small><strong id="phase-title"></strong><span id="phase-description"></span></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="overlay title-overlay" id="overlay">
+        <div class="intro" id="intro">
+          <p class="eyebrow"><span></span> 三阶段 BOSS 挑战 · 3000 HP</p>
+          <h1>仙境<span>漫游仙境的爱丽丝</span></h1>
+          <p class="intro-copy">玫瑰、礼帽，和不肯谢幕的茶会。<br>格挡来袭，在子弹时间里接续剑招。</p>
+          <button class="primary-button" id="challenge-button" disabled>挑战爱丽丝 <span aria-hidden="true">→</span></button>
+          <button class="secondary-button" id="start-button" disabled>进入练习</button>
+          <a class="primary-button" href="campaign.html">林间行旅 · 关卡模式 →</a>
+          <p class="start-hint" id="hero-asset-status" role="status">正在载入角色与像素森林…</p>
+          <p class="start-hint" id="start-hint">空格跳跃 · J 攻击 · K 冲刺 · L 技能 · F 防御</p>
+        </div>
+        <img class="title-alice" id="title-alice" src="assets/alice-pixel/model.png" alt="蓝裙、金发碧眼，戴礼帽并持玫瑰阳伞的爱丽丝">
+        <div class="state-panel" id="state-panel" hidden><p class="eyebrow" id="state-eyebrow">稍作停留</p><h2 id="state-title">林间小憩</h2><p id="state-copy">按 Esc 或点击按钮，继续练习。</p><button class="primary-button" id="continue-button">继续练习 <span aria-hidden="true">→</span></button><button class="secondary-button settings-button" id="keybind-button">键位设置</button><button class="secondary-button" id="back-button">返回仙境入口</button></div>
+        <div class="keybind-panel" id="keybind-panel" role="dialog" aria-modal="true" aria-labelledby="keybind-title" hidden>
+          <div class="keybind-heading"><div><p class="eyebrow">调整白狼的操作</p><h2 id="keybind-title">键位设置</h2></div><button id="keybind-close" class="icon-button" aria-label="关闭键位设置">×</button></div>
+          <p class="keybind-help">点击按键后按下新键，替换该操作的键位。Esc 固定用于暂停或返回。</p>
+          <div class="keybind-list" id="keybind-list"></div>
+          <p class="keybind-status" id="keybind-status" role="status" aria-live="polite">游戏保持暂停，保存后生效。</p>
+          <div class="keybind-footer"><button id="keybind-defaults" class="secondary-button">恢复默认</button><div><button id="keybind-cancel" class="secondary-button">取消</button><button id="keybind-save" class="primary-button">保存键位 <span aria-hidden="true">✓</span></button></div></div>
+        </div>
+      </div>
+      <div class="dialogue" id="dialogue" role="dialog" aria-modal="true" aria-labelledby="dialogue-name" hidden><img id="dialogue-portrait" src="assets/alice-pixel/model.png" alt="爱丽丝立绘"><div class="dialogue-card"><small id="dialogue-chapter">序幕 · 仙境的来客</small><strong id="dialogue-name">爱丽丝</strong><p id="dialogue-line"></p><button id="dialogue-next" class="primary-button">进入战斗 <span aria-hidden="true">→</span></button><span class="dialogue-hint">Enter / 空格继续</span></div></div>
+      <div class="scene-label"><span class="scene-marker"></span> 无消耗练习 <span class="scene-divider">/</span><span lang="en">FOREST DOJO</span></div>
+      <div class="game-tools"><button id="sound-button" class="icon-button" aria-label="关闭音效" aria-pressed="true">♪</button><button id="fullscreen-button" class="icon-button" aria-label="进入全屏">⛶</button></div>
+    </section>
+    <div class="below-game">
+      <p class="chapter"><span class="chapter-number" lang="en">01</span><span>基础剑式<small id="attack-guide">连续按 J：三段连击。空中按 J：跳跃攻击。</small></span></p>
+      <div class="keyboard-guide" aria-label="键盘操作"><span><kbd>A</kbd><kbd>D</kbd> 移动</span><span><kbd>空格</kbd> 跳跃</span><span><kbd>J</kbd> 攻击</span><span><kbd>K</kbd> 冲刺</span><span><kbd>L</kbd> 特殊键</span><span><kbd>F</kbd> 格挡 / 回避</span><span><kbd>Esc</kbd> 暂停</span></div>
+    </div>
+    <div class="skills" aria-label="特殊技能组合"><span class="skill-heading">剑的技能</span><span><kbd>↑ L</kbd> 升龙斩</span><span><kbd>↓ L</kbd> <span>地面反击 / 空中下劈</span></span><span><kbd>↔ L</kbd> 突进斩</span><span><kbd>L</kbd> 回旋斩</span><span><kbd>K → J</kbd> 疾步斩</span><span><kbd>K → L</kbd> 破风斩</span><small>匕首：特殊键发射往返飞刀并短暂虚化，3 秒内攻击增伤 50%。↓＋特殊键进入反击架势。</small></div>
+    <div class="defense-training"><p><kbd>F</kbd> <span id="defense-caption">地面格挡 18 帧 / 空中回避 12 帧</span><small id="defense-hint">面向弹丸，接近时格挡。成功后奖励 2 秒子弹时间。</small></p><div><button id="shot-button" class="training-button">发射练习弹 <kbd>T</kbd></button><button id="auto-attack-button" class="training-button" aria-pressed="false">自动攻击：关</button></div></div>
+    <div class="touch-controls" aria-label="触屏操作">
+      <div class="touch-pad"><button data-control="up" class="pad-up" aria-label="技能向上">↑</button><button data-control="left" class="pad-left" aria-label="向左">←</button><button data-control="down" class="pad-down" aria-label="技能向下">↓</button><button data-control="right" class="pad-right" aria-label="向右">→</button></div>
+      <div class="touch-actions"><button data-control="dash" aria-label="冲刺">冲刺</button><button data-control="jump" aria-label="跳跃">二段跳</button><button data-control="attack" aria-label="攻击">攻击</button><button data-control="special" aria-label="特殊技能">特殊</button><button data-control="defense" class="touch-defense" aria-label="格挡或空中回避">格挡 / 回避</button><button data-control="switchWeapon" class="touch-weapon" id="touch-weapon" aria-label="切换武器">切换 · 剑</button></div>
+    </div>
+    <section class="audio-section" aria-label="音效试听与音量">
+      <label for="audio-volume">音效音量</label><input id="audio-volume" type="range" min="0" max="100" step="1" value="90"><output id="audio-volume-value" for="audio-volume">90%</output>
+      <label for="audio-select">试听</label><select id="audio-select" aria-label="选择角色音效"></select><button id="audio-preview-button" class="text-button" type="button">播放音效 ♪</button>
+      <small id="audio-status" role="status">三种武器 · 特殊技 · 爱丽丝；试听会暂停当前战斗。</small>
+    </section>
+    <section class="sequence-section"><button id="sequence-button" class="text-button" aria-expanded="false" aria-controls="sequence-panel">查看角色序列帧 <span aria-hidden="true">↓</span></button><span class="sequence-note">白狼与爱丽丝 · 武器动画 · 技能特效</span><div id="sequence-panel" hidden><label for="sequence-select">动作</label><select id="sequence-select"><option value="idle">待机</option><option value="walk">行走（素材预览）</option><option value="run">疾跑（常态移动）</option><option value="dash">爆发冲刺（新版）</option><option value="jump">完整跳跃序列</option><option value="dodge">地面翻滚（素材预览）</option><option value="airdodge">空中闪避</option><option value="attack1">一式 · 横斩</option><option value="attack2">二式 · 逆斩</option><option value="attack3">三式 · 突刺</option><option value="airAttack">空中斩</option><option value="specialUp">升龙斩</option><option value="specialDown">落剑震击</option><option value="specialSide">突进斩</option><option value="specialNeutral">回旋斩</option><option value="guard">格挡</option><option value="parry">格挡成功</option><option value="airEvade">空中回避</option><option value="hurt">受击</option><option value="counterGuard">反击架势</option><option value="riposte">格挡反击</option><option value="daggerSpecial">往返影刃</option><option value="staffHeal">森林祈愈</option><option value="staffPurge">净空圆环</option><option value="dashAttack">疾步斩</option><option value="specialDash">破风斩</option><option value="fx-sword">武器 · 霜牙长剑</option><option value="fx-dagger">武器 · 赤晶短刃</option><option value="fx-staff">武器 · 青晶月杖</option><option value="fx-slash">特效 · 横斩刀光</option><option value="fx-thrust">特效 · 突刺波</option><option value="fx-spin">特效 · 回旋斩</option><option value="fx-rise">特效 · 升龙挑斩</option><option value="fx-plunge">特效 · 空中下劈</option><option value="fx-ground">特效 · 落地震击</option><option value="fx-hit">特效 · 命中爆点</option><option value="fx-guard">特效 · 格挡护印</option><option value="fx-dash">特效 · 冲刺尾迹</option><option value="fx-heal">特效 · 生命回复</option><option value="fx-purge">特效 · 清弹圆环</option><option value="fx-cast">特效 · 聚能符光</option><option value="alice-idle">爱丽丝 · 待机</option><option value="alice-walk">爱丽丝 · 移动</option><option value="alice-thrust">爱丽丝 · 突刺</option><option value="alice-sweep">爱丽丝 · 上挑</option><option value="alice-rush">爱丽丝 · 伞冲击</option><option value="alice-leap">爱丽丝 · 撑伞跳跃</option><option value="alice-cast">爱丽丝 · 施法</option><option value="alice-summon">爱丽丝 · 召唤</option><option value="alice-throw">爱丽丝 · 投掷</option><option value="alice-laugh">爱丽丝 · 大笑</option><option value="alice-guard">爱丽丝 · 当身</option><option value="alice-hurt">爱丽丝 · 受击</option><option value="alice-defeated">爱丽丝 · 战败</option><option value="alice-depart">爱丽丝 · 离场</option></select><div class="sequence-scroll"><canvas id="sequence-canvas" aria-label="角色动作逐帧预览"></canvas></div><p>白狼、爱丽丝、新武器及刀光特效均可逐帧查看，下拉菜单包含命中、治疗、清弹等独立特效。可切换武器查看握持效果；地面翻滚仅供素材预览。</p></div></section>
+    <section class="boss-guide"><p class="eyebrow">爱丽丝的茶会</p><div><p><b>Ⅰ · 3000—2000 HP</b><span>三连伞击、伞冲击、花溅跃、鲜花机关枪。临时召唤柴郡猫与三月兔。</span></p><p><b>Ⅱ · 2000—1000 HP</b><span>礼帽留在场中向四角投匕首。冲击、跳跃加速，花弹开始追踪。</span></p><p><b>Ⅲ · 1000—0 HP</b><span>猫兔常驻但弹幕减量。落刀有斜向和四散分支；红心保护时先打替身。</span></p></div></section>
+    <footer><span>格挡赢得反击时间。猫的束缚期间仍可攻击与防御。</span><span lang="en">WELCOME TO WONDERLAND.</span></footer>
+  </main>
+</body>
+</html>
+

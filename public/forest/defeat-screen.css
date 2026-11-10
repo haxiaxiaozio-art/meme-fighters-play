@@ -1,0 +1,72 @@
+.defeat-screen{
+ position:fixed;inset:0;margin:0;width:100%;height:100%;max-width:none;max-height:none;
+ box-sizing:border-box;padding:0;border:0;overflow:hidden;background:#000;color:#f4e8cc;
+ text-align:center;color-scheme:dark;isolation:isolate;
+}
+.defeat-screen:not([open]){display:none}
+.defeat-screen::backdrop{background:transparent}
+.defeat-scene{position:absolute;top:0;left:50%;width:min(390px,90vw);height:56%;transform:translateX(-50%)}
+.defeat-beam{
+ position:absolute;inset:0 0 0;
+ clip-path:polygon(48% 0,52% 0,83% 100%,17% 100%);
+ background:linear-gradient(180deg,#f4d89636,#ebc67a18 65%,#f1d79c33);
+ transform-origin:top center;
+ animation:defeat-light .8s .12s cubic-bezier(.2,.8,.24,1) both;
+}
+.defeat-beam::after{
+ content:'';position:absolute;inset:0;clip-path:polygon(49% 0,51% 0,66% 100%,34% 100%);
+ background:linear-gradient(180deg,#fff1bc57,#ffecb017 65%,#ffe7a82a);
+}
+.defeat-ground{
+ position:absolute;bottom:-13px;left:50%;width:78%;height:46px;transform:translateX(-50%);
+ background:radial-gradient(ellipse at center,#ffe6a643,#dca86616 46%,transparent 70%);
+ animation:defeat-reveal .5s .51s both;
+}
+.defeat-wolf,.defeat-rise{
+ position:absolute;bottom:0;left:50%;width:min(56%,226px);transform:translateX(-50%);
+ image-rendering:pixelated;filter:drop-shadow(0 5px 2px #000b);
+}
+.defeat-wolf{
+ height:auto;
+ animation:defeat-reveal .4s .55s both;
+}
+.defeat-rise{
+ aspect-ratio:8/5;visibility:hidden;
+ background:url('assets/expedition-art/wolf-recover.png') 0 0/200% 200% no-repeat;
+}
+.defeat-reviving .defeat-wolf{animation:defeat-prone var(--defeat-rise-ms) step-end both}
+.defeat-reviving .defeat-rise{animation:defeat-stand var(--defeat-rise-ms) step-end both}
+.defeat-fading{animation:defeat-fade var(--defeat-fade-ms) ease-in-out both}
+.defeat-prompt{position:absolute;top:64%;inset-inline:16px;animation:defeat-reveal .4s .76s both}
+.defeat-prompt h2{
+ margin:0 0 clamp(12px,3vh,26px);color:#f4e8cc;
+ font:500 clamp(25px,4vw,39px)/1.3 'Songti SC','STSong','SimSun',serif;
+ letter-spacing:.10em;
+}
+.defeat-actions{display:flex;justify-content:center;gap:12px}
+.defeat-actions button{
+ min-width:98px;min-height:42px;padding:7px 14px;border:1px solid #9e8c68;border-radius:3px;
+ background:#130f0a;color:#ead8b1;font:600 14px/1.2 'Microsoft YaHei',sans-serif;cursor:pointer;
+}
+.defeat-actions .defeat-continue{background:#dfc38e;color:#1c160d;border-color:#dfc38e}
+.defeat-actions button:hover{background:#332616;border-color:#dfc38e}
+.defeat-actions .defeat-continue:hover{background:#f0d5a4}
+.defeat-actions button:focus-visible{outline:2px solid #fff0c5;outline-offset:3px}
+@keyframes defeat-light{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+@keyframes defeat-reveal{from{opacity:0}to{opacity:1}}
+@keyframes defeat-prone{0%{visibility:visible}16%,100%{visibility:hidden}}
+@keyframes defeat-stand{
+ 0%{visibility:hidden;background-position:0 0}
+ 16%{visibility:visible;background-position:0 0}
+ 37%{visibility:visible;background-position:100% 0}
+ 58%{visibility:visible;background-position:0 100%}
+ 79%,100%{visibility:visible;background-position:100% 100%}
+}
+@keyframes defeat-fade{from{opacity:1}to{opacity:0}}
+@media(max-height:390px){.defeat-scene{height:50%}.defeat-wolf,.defeat-rise{width:min(44%,168px)}.defeat-prompt{top:60%}}
+@media(prefers-reduced-motion:reduce){
+ .defeat-beam,.defeat-ground,.defeat-wolf,.defeat-prompt,.defeat-reviving .defeat-rise,.defeat-reviving .defeat-wolf{animation:none}
+ .defeat-reviving .defeat-wolf{visibility:hidden}
+ .defeat-reviving .defeat-rise{visibility:visible;background-position:100% 100%}
+ .defeat-fading{animation-duration:var(--defeat-reduced-fade-ms)}
+}

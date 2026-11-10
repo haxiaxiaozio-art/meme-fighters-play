@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'">
+<title>森境 · 林间行旅</title>
+<link rel="stylesheet" href="campaign.css">
+<link rel="stylesheet" href="defeat-screen.css">
+<link rel="preload" as="image" href="assets/expedition-art/wolf-defeated.png">
+<link rel="preload" as="image" href="assets/expedition-art/wolf-recover.png">
+<script src="sprites.js" defer></script>
+<script src="assets/wolf-combat/data.js" defer></script>
+<script src="assets/wolf-fx/data.js" defer></script>
+<script src="wolf-fx.js" defer></script>
+<script src="wolf-sprites.js" defer></script>
+<script src="combat-config.js" defer></script>
+<script src="engine.js" defer></script>
+<script src="pixel-world.js" defer></script>
+<script src="boss.js" defer></script>
+<script src="assets/alice-pixel/data.js" defer></script>
+<script src="alice-sprites.js" defer></script>
+<script src="alice-fx.js" defer></script>
+<script src="boss-render.js" defer></script>
+<script src="keybindings.js" defer></script>
+<script src="audio-config.js" defer></script>
+<script src="assets/audio/alice-voice.js" defer></script>
+<script src="sound-bank.js" defer></script>
+<script src="game-audio.js" defer></script>
+<script src="level-data.js" defer></script>
+<script src="expedition-art.js" defer></script>
+<script src="level-progress.js" defer></script>
+<script src="level-magic.js" defer></script>
+<script src="level-engine.js" defer></script>
+<script src="assets/forest-enemies/registration.js" defer></script>
+<script src="level-render.js" defer></script>
+<script src="level-sockets.js" defer></script>
+<script src="defeat-screen.js" defer></script>
+<script src="campaign.js" defer></script>
+</head>
+<body>
+<header id="play-header">
+ <div><h1>森境 · 林间行旅</h1><small id="level-name">通往茶会的小径</small></div>
+ <nav><a class="button" id="home" href="index.html">返回入口</a><button id="build-button">镶嵌 · Tab</button><button id="pause-button">暂停 · Esc</button></nav>
+</header>
+<main id="play-main">
+ <div class="stage" id="play-stage">
+  <canvas id="canvas" width="1280" height="720" tabindex="0" aria-label="横版闯关场景"></canvas>
+  <div class="hud">
+   <div class="resources">
+    <div id="health-meter" class="meter health" role="img" aria-label="生命"></div>
+    <div id="spirit-meter" class="meter spirit" role="img" aria-label="灵能"></div>
+   </div>
+  </div>
+  <div id="boss-hud" class="boss-cue"></div>
+  <div class="weapon-hud">
+   <div id="quick-skills" class="quick-skills" aria-label="当前武器技能"></div>
+   <div class="weapon-current"><span id="weapon-icon" class="weapon-icon" aria-hidden="true"></span><strong id="player-hud"></strong></div>
+  </div>
+  <p id="toast" class="toast play-toast" role="status"></p>
+  <div id="overlay" class="overlay">
+   <section class="dialog">
+    <h2 id="dialog-title">林间行旅</h2>
+    <p id="dialog-copy">正在载入素材…</p>
+    <nav><button id="dialog-primary" disabled>进入关卡</button><button id="dialog-secondary" hidden>返回入口</button></nav>
+   </section>
+  </div>
+ </div>
+ <details class="play-options">
+  <summary>操作与设置</summary>
+  <div class="help" id="controls"></div>
+  <nav class="help">
+   <label class="file-label">导入关卡 <input type="file" id="import-level" accept=".json,application/json"></label>
+   <label>音量 <input class="volume" type="range" id="volume" min="0" max="100" value="75"></label>
+   <button id="builtin-level">内置关卡</button><button id="reset-progress">重置本关进度</button>
+  </nav>
+ </details>
+</main>
+<section class="panel socket-panel" id="build-panel" role="dialog" aria-modal="true" aria-labelledby="socket-title" hidden>
+ <div class="panel-head">
+  <div><span class="socket-kicker" id="socket-location"></span><h2 id="socket-title">营火镶嵌</h2></div>
+  <button id="build-close">返回 · Esc</button>
+ </div>
+ <nav id="socket-groups" class="socket-groups" aria-label="镶嵌分类"></nav>
+ <div class="workbench">
+  <section class="socket-tray"><h3 id="socket-tray-title">已收集的符印</h3><div id="socket-inventory" class="socket-inventory"></div></section>
+  <section class="socket-destinations"><div class="slot-heading"><h3>槽位</h3><span id="socket-capacity"></span></div><div id="socket-slots" class="socket-slots"></div></section>
+ </div>
+ <footer class="socket-footer">
+  <div><p>拖入槽位，或依次点选道具和槽位。</p><p id="socket-status" role="status"></p></div>
+  <button id="save-camp">营地存档</button>
+ </footer>
+</section>
+<div class="socket-ghost" id="socket-ghost" aria-hidden="true" hidden></div>
+</body>
+</html>
